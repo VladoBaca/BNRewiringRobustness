@@ -1,0 +1,25 @@
+Package: BNRewiringRobustness
+Title: Discrete Bifurcation Analysis and Rewiring Robustness of Asynchronous Boolean Networks 
+Version: 1.0.0.0000
+Authors@R: 
+    person(given = "Vladimír",
+           family = "Bača",
+           role = c("aut", "cre"),
+           email = "v.baca@mail.muni.cz",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: The package implements a prototype computation of discrete bifurcation analysis and rewiring robustness of a Boolean network. The Boolean networks can be entered in simple text format. The space of considered rewirings is also entered in a simple text format in a specific form of regulatory graph, which allows the use of regulations with unspecified observability and monotonicity. This enables it to define the whole space of possible networks. The regulatory graph is then transformed into parametrised Boolean netowork, which gives meaning to usage of discrete bifurcation analysis.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+    BoolNet,
+    doParallel,
+    iterators,
+    lpSolve,
+    parallel
+Depends:
+    foreach
+Suggests: 
+    testthat

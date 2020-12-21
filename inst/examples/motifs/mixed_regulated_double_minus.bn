@@ -1,0 +1,4 @@
+targets, factors
+R, (R | !R)
+A, (!B & R)
+B, (!A & !R)
