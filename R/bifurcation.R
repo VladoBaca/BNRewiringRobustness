@@ -38,12 +38,11 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
 
   gene_regulators_indexes <- pbn$gene_regulators_indexes
 
-  parametrisations <- lapply(1:nrow(pbn$function_index_combinations),
-                             function(parametrisation_i) get_parametrisation_by_index(pbn, parametrisation_i))
+  gene_function_vectors <- pbn$gene_function_vectors
 
-  discrete_bifurcation <- parallel_apply(parametrisations,
-                                         function(parametrisation)
-                                           compute_db_single(parametrisation,
+  discrete_bifurcation <- parallel_apply(pbn$function_index_combinations,
+                                         function(index_combination_vector)
+                                           compute_db_single(index_combination_vector, gene_function_vectors,  #parametrisation,
                                                              baseline_parametrisation, baseline_attractor_landscape,
                                                              output_genes, output_genes_encoder,
                                                              genes, gene_regulators_indexes, instance_states, pre_to_post,
@@ -53,11 +52,12 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
   return(discrete_bifurcation)
 }
 
-compute_db_single <- function(parametrisation,
+compute_db_single <- function(index_combination_vector, gene_function_vectors, #parametrisation,
                               baseline_parametrisation, baseline_attractor_landscape,
                               output_genes, output_genes_encoder,
                               genes, gene_regulators_indexes, instance_states, pre_to_post,
                               semantics, attractor_similarity) {
+  parametrisation <- get_parametrisation_by_index_combination_vector(gene_function_vectors, index_combination_vector)
 
   rewiring_distance <- compute_rewiring_distance(baseline_parametrisation, parametrisation)
 

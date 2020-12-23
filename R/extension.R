@@ -3,7 +3,7 @@ create_extension <- function(bn_motif, rg_large, output_genes) {
   validate_genes(bn_motif, rg_large, output_genes)
   validate_edges(bn_motif, rg_large)
 
-  intermediate_genes <- compute_intermediate_genes(bn_motif, rg_large)
+  intermediate_genes <- compute_intermediate_genes(bn_motif$genes, rg_large)
 
   rg_intermediate <- create_intermediate_rg(rg_large, intermediate_genes)
 
@@ -15,9 +15,9 @@ create_extension <- function(bn_motif, rg_large, output_genes) {
 }
 
 #' Compute the set of transitive regulators of motif genes
-compute_intermediate_genes <- function(bn_motif, rg_large)
+compute_intermediate_genes <- function(motif_genes, rg_large)
 {
-  gene_set <- bn_motif$genes
+  gene_set <- motif_genes
   changed <- TRUE
 
   while (changed) {

@@ -10,6 +10,11 @@ create_pbn_from_rg <- function(rg) {
 
   function_index_combinations <- expand.grid(lapply(gene_function_vectors, function(p) 1:length(p)))
 
+  function_index_combinations <- apply(function_index_combinations, 2, (function(x) x))
+  function_index_combinations <- unname(tapply(function_index_combinations,
+                                               rep(1:nrow(function_index_combinations),
+                                                   ncol(function_index_combinations)),function(i)i))
+
   return(list(genes = genes, gene_regulators_indexes = gene_regulators_indexes,
               gene_function_vectors = gene_function_vectors, function_index_combinations = function_index_combinations))
 }
@@ -112,9 +117,13 @@ generate_parametrisation_instance <- function(pbn, parametrisation) {
 }
 
 get_parametrisation_by_index <- function(pbn, parametrisation_index) {
-  index_combination_vector <- as.numeric(pbn$function_index_combinations[parametrisation_index,])
+  index_combination_vector <- pbn$function_index_combinations[[parametrisation_index]]  # as.numeric(pbn$function_index_combinations[parametrisation_index,])
 
+  return(get_parametrisation_by_index_combination_vector(pbn$gene_function_vectors, index_combination_vector))
+}
+
+get_parametrisation_by_index_combination_vector <- function(gene_function_vectors, index_combination_vector) {
   parametrisation <- lapply(1:length(index_combination_vector),
-                            function(i) pbn$gene_function_vectors[[i]][[index_combination_vector[i]]])
+                            function(i) gene_function_vectors[[i]][[index_combination_vector[i]]])
   return(parametrisation)
 }

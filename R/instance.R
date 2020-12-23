@@ -53,7 +53,7 @@ compute_transition_table_cell <- function(instance, conversion_vectors, input_ro
 #' @export
 extract_instance <- function(discrete_bifurcation_result, instance_index) {
   if (!("pbn" %in% names(discrete_bifurcation_result))) {
-    fail("discrete_bifurcation_result does not contain the PBN! In order to extract instances, compute_discrete_bifurcation must be called with return_pbn = TRUE.")
+    stop("discrete_bifurcation_result does not contain the PBN! In order to extract instances, compute_discrete_bifurcation must be called with return_pbn = TRUE.")
   }
 
   parametrisation <- get_parametrisation_by_index(discrete_bifurcation_result$pbn, instance_index)

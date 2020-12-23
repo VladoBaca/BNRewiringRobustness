@@ -33,7 +33,7 @@ test_that("load_BN correctly loads the Boolean networks", {
 
 
 test_that("load_PBN correctly loads the parametrised Boolean network", {
-  test_net = load_PBN(system.file("examples", "pbns", "all_reg_types.pbn", package = "BNRewiringRobustness"))
+  test_net <- load_PBN(system.file("examples", "pbns", "all_reg_types.pbn", package = "BNRewiringRobustness"))
 
   expect_equivalent(test_net$genes, c("A", "B", "C", "D"))
 
@@ -48,5 +48,9 @@ test_that("load_PBN correctly loads the parametrised Boolean network", {
 
   expect_equivalent(test_net$gene_regulators_indexes, list(c(2,3),c(1,3),c(1,2),c(4)))
 
-  expect_equivalent(test_net$function_index_combinations,expand.grid(1:3, 1:5, 1:6, 1:1))
+  combs <- expand.grid(1:3, 1:5, 1:6, 1:1)
+  m <- apply(combs, 2, (function(x) x))
+  expected_combinations <- (unname(tapply(m,rep(1:nrow(m),ncol(m)),function(i)i)))
+
+  expect_equivalent(test_net$function_index_combinations,expected_combinations)
 })
