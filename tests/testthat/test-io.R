@@ -33,7 +33,7 @@ test_that("load_BN correctly loads the Boolean networks", {
 
 
 test_that("load_PBN correctly loads the parametrised Boolean network", {
-  test_net <- load_PBN(system.file("examples", "pbns", "all_reg_types.pbn", package = "BNRewiringRobustness"))
+  test_net <- load_PBN(system.file("examples", "rgs", "all_reg_types.rg", package = "BNRewiringRobustness"))
 
   expect_equivalent(test_net$genes, c("A", "B", "C", "D"))
 

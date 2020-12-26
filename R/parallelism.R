@@ -7,7 +7,7 @@ prepare_parallel <- function() {
 }
 
 #TODO fix messaging?
-parallel_apply <- function(collection, fun, packages = character(), message_frequency = 0, verbose = FALSE) {
+parallel_apply <- function(collection, fun, packages = character(), seq_threshold = 0, message_frequency = 0, verbose = FALSE) {
   try_message <- function(i, count, frequency) {
     if (frequency == 0) {
       return()
@@ -16,6 +16,31 @@ parallel_apply <- function(collection, fun, packages = character(), message_freq
       #write(paste(100*i/count, "% done (", i, " out of ", count, ") "), file = "C:\\Users\\vladimir.baca\\Documents\\test.txt", append = TRUE)
       message(paste0(100*i/count, "% done (", i, " out of ", count, ") "))
     }
+  }
+
+  execute_sequentially <- function()
+  {
+    if(message_frequency > 0 & verbose) {
+      if(is.list(collection)) {
+        return(lapply(1:length(collection), function(i) {
+          result <- fun(collection[[i]])
+          try_message(i, length(collection), message_frequency)
+          return(result)
+        }))
+      } else {
+        return(lapply(1:length(collection), function(i) {
+          result <- fun(collection[i])
+          try_message(i, length(collection), message_frequency)
+          return(result)
+        }))
+      }
+    } else {
+      return(lapply(collection, fun))
+    }
+  }
+
+  if (seq_threshold > 0 & length(collection) < seq_threshold) {
+    return(execute_sequentially())
   }
 
   results <- tryCatch( {
@@ -50,23 +75,7 @@ parallel_apply <- function(collection, fun, packages = character(), message_freq
       message(cond)
       message()
 
-      if(message_frequency > 0 & verbose) {
-        if(is.list(collection)) {
-          return(lapply(1:length(collection), function(i) {
-            result <- fun(collection[[i]])
-            try_message(i, length(collection), message_frequency)
-            return(result)
-          }))
-        } else {
-          return(lapply(1:length(collection), function(i) {
-            result <- fun(collection[i])
-            try_message(i, length(collection), message_frequency)
-            return(result)
-          }))
-        }
-      } else {
-        return(lapply(collection, fun))
-      }
+      return(execute_sequentially())
     },
     finally = {
       parallel::stopCluster(cluster)

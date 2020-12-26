@@ -47,7 +47,8 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
                                                              output_genes, output_genes_encoder,
                                                              genes, gene_regulators_indexes, instance_states, pre_to_post,
                                                              semantics, attractor_similarity),
-                                           packages = c("BoolNet"), message_frequency = 500, verbose = verbose)
+                                           packages = c("BoolNet"), seq_threshold = 500,
+                                           message_frequency = 500, verbose = verbose)
 
   return(discrete_bifurcation)
 }

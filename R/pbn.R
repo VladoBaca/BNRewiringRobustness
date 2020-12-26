@@ -1,4 +1,5 @@
 #' Create a PBN from given RG.
+#' @export
 create_pbn_from_rg <- function(rg) {
   genes <- get_rg_genes(rg)
 

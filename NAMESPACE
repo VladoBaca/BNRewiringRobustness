@@ -3,6 +3,7 @@
 export(bifurcation_plot)
 export(compute_discrete_bifurcation)
 export(compute_rewiring_robustness)
+export(create_pbn_from_rg)
 export(extract_instance)
 export(load_BN)
 export(load_PBN)

@@ -4,7 +4,7 @@
 \alias{compute_intermediate_genes}
 \title{Compute the set of transitive regulators of motif genes}
 \usage{
-compute_intermediate_genes(bn_motif, rg_large)
+compute_intermediate_genes(motif_genes, rg_large)
 }
 \description{
 Compute the set of transitive regulators of motif genes
