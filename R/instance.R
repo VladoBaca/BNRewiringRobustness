@@ -1,6 +1,6 @@
 # O(ni^2 * 2^np)
 #' Build the transition table in the form of an matrix:
-#' line = index of the (all-genes) state (binary+1), row = (instance-gene)
+#' row = index of the (all-genes) state (binary+1), col = (instance-gene)
 build_transition_table <- function(instance, all_genes) {
   #TODO this may be replaced by something better
 

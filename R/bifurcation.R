@@ -42,7 +42,7 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
 
   discrete_bifurcation <- parallel_apply(pbn$function_index_combinations,
                                          function(index_combination_vector)
-                                           compute_db_single(index_combination_vector, gene_function_vectors,  #parametrisation,
+                                           compute_db_single(index_combination_vector, gene_function_vectors,
                                                              baseline_parametrisation, baseline_attractor_landscape,
                                                              output_genes, output_genes_encoder,
                                                              genes, gene_regulators_indexes, instance_states, pre_to_post,
@@ -53,7 +53,7 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
   return(discrete_bifurcation)
 }
 
-compute_db_single <- function(index_combination_vector, gene_function_vectors, #parametrisation,
+compute_db_single <- function(index_combination_vector, gene_function_vectors,
                               baseline_parametrisation, baseline_attractor_landscape,
                               output_genes, output_genes_encoder,
                               genes, gene_regulators_indexes, instance_states, pre_to_post,

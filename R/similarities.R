@@ -16,7 +16,8 @@ compute_attractor_landscape_similarity <- function(attractor_landscape_1, attrac
                                                                        instance_states, attractor_similarity)
 
   lp_objective_coefficients <- as.vector(t(attractors_similarity_matrix))
-  lp_constraints_coefficients_matrix <- compute_constraints_coefficients_matrix(attractor_landscape_1, attractor_landscape_2)
+  lp_constraints_coefficients_matrix <- compute_constraints_coefficients_matrix(length(attractor_landscape_1$attractors),
+                                                                                length(attractor_landscape_2$attractors))
   lp_directions <- rep("==", length(attractor_landscape_1$attractors) + length(attractor_landscape_2$attractors))
 
   attractor_distribution_similarity_vector <- sapply(1:length(instance_states), function(state_i)
@@ -123,10 +124,7 @@ compute_attractors_output_states_ratios_matrix <- function(attractors, output_ge
   return(attractors_output_states_ratios_matrix)
 }
 
-compute_constraints_coefficients_matrix <- function(attractor_landscape_1, attractor_landscape_2) {
-  attractor_1_count <- length(attractor_landscape_1$attractors)
-  attractor_2_count <- length(attractor_landscape_2$attractors)
-
+compute_constraints_coefficients_matrix <- function(attractor_1_count, attractor_2_count) {
   constraints_coefficients_matrix <- matrix(0, nrow = attractor_1_count + attractor_2_count, ncol = attractor_1_count * attractor_2_count)
   ones_1 <- rep(1, attractor_2_count)
   ones_2 <- rep(1, attractor_1_count)

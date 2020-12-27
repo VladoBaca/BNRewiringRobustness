@@ -1,9 +1,10 @@
-A -> B
 A -> A
+A -> B
 A -? C
 B ->? C
+B -> A
 C -|? A
 D -> D
-B -> A
 C -> D
 A -? D
+E -> C

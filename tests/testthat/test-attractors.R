@@ -1,14 +1,6 @@
 context("Functionality of constructing attractor probability distributions")
 
 getAsyncAttractorsData_iteratively <- function(network, attractors) {
-  #preData <- BoolNet::getAttractors(network, type="asynchronous", method="chosen", startStates = all_binary_vectors(length(network$genes)))
-
-  #allStateVectors <- all_binary_vectors(length(network$genes))
-
-  #preToPost <- sapply(allStateVectors, function(bv) binary_vector_to_number(rev(bv)))
-
-  #attractors <- lapply(preData$attractors, function(a) sapply(a$involvedStates[1,], function(as) preToPost[as+1]))
-
   stateInfo <- computeAttractorProbabilities_iteratively(network, attractors)
 
   return(stateInfo)
@@ -148,6 +140,16 @@ get_dfs_attractors_data <- function(instance) {
   return(dfs_attractors_data)
 }
 
+get_dfs_attractors_data_sync <- function(instance) {
+  instance_gene_count <- length(instance$genes)
+  instance_states <- all_binary_vectors(instance_gene_count)
+  pre_to_post <- pre_to_post_vector(instance_states)
+
+  dfs_attractors_data <- get_attractors_data_sync(instance, pre_to_post)
+
+  return(dfs_attractors_data)
+}
+
 test_that("get_attractors_data_async creates the same attractor distributions as the iterative algorithm", {
   test_instance("eq_test")
   test_instance("fb_minus")
@@ -182,6 +184,65 @@ test_that("get_attractors_data_async computes correct attractors and distributio
 
   expect_equivalent(actual_attractors, expected_attractors)
   expect_equivalent(actual_probs, expected_probs)
+})
 
-  #TODO add sth with big attractor
+test_that("get_attractors_data_async computes correct attractors and distributions for test_triple_or", {
+  dfs_attractors_data <- get_dfs_attractors_data(load_instance_by_name("test_triple_or"))
+
+  expected_attractors <- list(c(7),c(0,2))
+  expected_matrix <- matrix(c(0, 1,
+                              0.5,0.5,
+                              0, 1,
+                              0.5,0.5,
+                              0.5,0.5,
+                              1, 0,
+                              0.5,0.5,
+                              1, 0), nrow = 8, ncol = 2, byrow = TRUE)
+
+  if(dfs_attractors_data$attractors[[1]] != c(7)) {
+    expected_attractors <- list(c(0,2),c(7))
+    expected_matrix <- expected_matrix[,c(2,1)]
+  }
+
+  expect_equivalent(length(dfs_attractors_data$attractors), length(expected_attractors))
+  expect_equivalent(sort(dfs_attractors_data$attractors[[1]]), expected_attractors[[1]])
+  expect_equivalent(sort(dfs_attractors_data$attractors[[2]]), expected_attractors[[2]])
+
+  expect_equivalent(dfs_attractors_data$distribution_matrix, expected_matrix)
+})
+
+test_that("get_attractors_data_sync computes correct attractors and distributions for test_triple_or", {
+  dfs_attractors_data <- get_dfs_attractors_data_sync(load_instance_by_name("test_triple_or"))
+
+  expected_attractors <- list(c(7),c(0,2), c(3,4))
+
+  expected_matrix <- matrix(c(0, 1, 0,
+                              0, 0, 1,
+                              0, 1, 0,
+                              0, 0, 1,
+                              0, 0, 1,
+                              1, 0, 0,
+                              0, 0, 1,
+                              1, 0, 0
+                              ), nrow = 8, ncol = 3, byrow = TRUE)
+
+  encoding_vector <- sapply(seq_len(length(expected_attractors)), function(i) {
+    for (j in seq_len(length(dfs_attractors_data$attractors))) {
+      if(all(sort(dfs_attractors_data$attractors[[j]]) == expected_attractors[[i]])) {
+        return(j)
+      }
+    }
+  })
+
+  expected_attractors <- list(expected_attractors[[encoding_vector[1]]],
+                              expected_attractors[[encoding_vector[2]]],
+                              expected_attractors[[encoding_vector[3]]])
+  expected_matrix <- expected_matrix[,encoding_vector]
+
+  expect_equivalent(length(dfs_attractors_data$attractors), length(expected_attractors))
+  expect_equivalent(sort(dfs_attractors_data$attractors[[1]]), expected_attractors[[1]])
+  expect_equivalent(sort(dfs_attractors_data$attractors[[2]]), expected_attractors[[2]])
+  expect_equivalent(sort(dfs_attractors_data$attractors[[3]]), expected_attractors[[3]])
+
+  expect_equivalent(dfs_attractors_data$distribution_matrix, expected_matrix)
 })
