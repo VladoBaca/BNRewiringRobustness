@@ -47,6 +47,8 @@ results <- foreach::foreach (i=cases, .packages = c("BNRewiringRobustness")) %do
 
 parallel::stopCluster(cluster)
 
+# results <- read.csv("motifs-generic_results.csv")[,5:12]
+
 # the columns of the update functions vectors
 f_A <- sapply(pbn$function_index_combinations, function(index_combination_vector) {
   return(paste(pbn$gene_function_vectors[[1]][[index_combination_vector[1]]], collapse =""))
@@ -83,7 +85,7 @@ results_all <- data.frame(f_A, f_B, motif_names,
 # rename the columns with robustness values according to the setups
 names(results_all)[4:11] <- sapply(cases, function(case) paste(unlist(case), collapse = "-"))
 
-write.csv2(results_all, "motifs-2_results.csv")
+# write.csv(results_all, "motifs-generic_results.csv")
 
 # histograms of the motifs robustness for all the setups
 hist_with_values_and_quantiles <- function(data, motif_names, main = "", breaks = 20, quantiles = c(0.05, 0.95)) {
@@ -107,10 +109,20 @@ hist_with_values_and_quantiles <- function(data, motif_names, main = "", breaks 
 }
 
 for (i in seq_len(length(results))) {
+  #svg_file_name <- paste0(gsub("[.]", "-" , paste(unlist(cases[[i]]), collapse = "-")), ".svg")
+  #svg(filename = svg_file_name, width=4.8, height=3)
+
   hist_with_values_and_quantiles(results[[i]], motif_names, main = paste(unlist(cases[[i]]), collapse = ", "))
+
+  #dev.off()
 }
 
 # correlation matrix of the setups
 correlation_matrix <- cor(results_all[,c(4,8,6,10,5,9,7,11)], method = "spearman")
+
+#svg(filename = "corr_plot.svg", width=6, height=7)
+
 corrplot(correlation_matrix, type = "lower", method = "number")
+
+#dev.off()
 

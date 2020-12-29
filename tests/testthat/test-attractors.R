@@ -154,7 +154,7 @@ test_that("get_attractors_data_async creates the same attractor distributions as
   test_instance("eq_test")
   test_instance("fb_minus")
   test_instance("ffl_c1")
-  test_instance("mutex_assymetric")
+  test_instance("crm_assymetric")
   test_instance("cellcycle_and")
   test_instance("mixed_regulated_double_minus")
   test_instance("fb_minus")

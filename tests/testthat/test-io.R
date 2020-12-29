@@ -21,14 +21,14 @@ test_that("load_BN correctly loads the Boolean networks", {
   expect_equivalent(ffl_c_1$interactions$C$input, c(1, 2))
   expect_equivalent(ffl_c_1$interactions$C$func, c(0, 1, 1, 1))
 
-  mutex_assymetric = load_BN(system.file("examples", "motifs", "mutex_assymetric.bn", package = "BNRewiringRobustness"))
+  crm_assymetric = load_BN(system.file("examples", "motifs", "crm_assymetric.bn", package = "BNRewiringRobustness"))
 
-  expect_equivalent(mutex_assymetric$genes, c("A", "B"))
-  expect_equivalent(mutex_assymetric$fixed, c(-1, -1))
-  expect_equivalent(mutex_assymetric$interactions$A$input, c(1, 2))
-  expect_equivalent(mutex_assymetric$interactions$A$func, c(1, 0, 1, 1))
-  expect_equivalent(mutex_assymetric$interactions$B$input, c(1, 2))
-  expect_equivalent(mutex_assymetric$interactions$B$func, c(0, 1, 0, 0))
+  expect_equivalent(crm_assymetric$genes, c("A", "B"))
+  expect_equivalent(crm_assymetric$fixed, c(-1, -1))
+  expect_equivalent(crm_assymetric$interactions$A$input, c(1, 2))
+  expect_equivalent(crm_assymetric$interactions$A$func, c(1, 0, 1, 1))
+  expect_equivalent(crm_assymetric$interactions$B$input, c(1, 2))
+  expect_equivalent(crm_assymetric$interactions$B$func, c(0, 1, 0, 0))
 })
 
 

@@ -1,3 +1,0 @@
-targets, factors
-A, (A & !B)
-B, (!A & B)
