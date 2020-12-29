@@ -1,13 +1,25 @@
 #' @export
 compute_discrete_bifurcation <- function(bn_baseline_network, rg_rewiring_space, output_genes = character(),
-                                         semantics = "async", attractor_similarity = "activity", return_pbn = FALSE, verbose = FALSE) {
+                                         semantics = "async", attractor_similarity = "activity", return_pbn = FALSE) {
   inputs <- process_inputs(bn_baseline_network, rg_rewiring_space, output_genes)
 
   intermediates <- create_extension(inputs$bn, inputs$rg, inputs$output_genes)
 
+  parametrisations_count <- length(intermediates$pbn$function_index_combinations)
+
+  message(paste("Starting computation for", parametrisations_count, "parametrisations."))
+
+  if(parametrisations_count > 200000) {
+    message(paste("Warning! This operation may take a significant time (hours)!"))
+  } else if(parametrisations_count > 5000) {
+    message(paste("Warning! This operation may take some time (minutes)!"))
+  } else if(parametrisations_count > 1000) {
+    message(paste("Warning! This operation may take some time (seconds)!"))
+  }
+
   discrete_bifurcation <- compute_discrete_bifurcation_inner(intermediates$pbn, intermediates$bn_parametrisation,
                                                              output_genes = inputs$output_genes, semantics = semantics,
-                                                             attractor_similarity = attractor_similarity, verbose)
+                                                             attractor_similarity = attractor_similarity)
 
   rewiring_distance <- sapply(discrete_bifurcation, function(row) row$rewiring_distance)
   attractor_landscape_similarity <- sapply(discrete_bifurcation, function(row) row$attractor_landscape_similarity)
@@ -23,11 +35,13 @@ compute_discrete_bifurcation <- function(bn_baseline_network, rg_rewiring_space,
     result$pbn = intermediates$pbn
   }
 
+  message("Operation finished successfully!")
+
   return(result)
 }
 
 compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, output_genes = character(),
-                                               semantics = "async", attractor_similarity = "activity", verbose = FALSE) {
+                                               semantics = "async", attractor_similarity = "activity") {
 
   genes <- pbn$genes
   instance_states <- all_binary_vectors(length(genes))
@@ -47,8 +61,8 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
                                                              output_genes, output_genes_encoder,
                                                              genes, gene_regulators_indexes, instance_states, pre_to_post,
                                                              semantics, attractor_similarity),
-                                           packages = c("BoolNet"), seq_threshold = 500,
-                                           message_frequency = 500, verbose = verbose)
+                                         packages = c("BoolNet"), seq_threshold = 500,
+                                         log_frequency = 500)
 
   return(discrete_bifurcation)
 }
@@ -71,9 +85,8 @@ compute_db_single <- function(index_combination_vector, gene_function_vectors,
   return(list(rewiring_distance = rewiring_distance, attractor_landscape_similarity = attractor_landscape_similarity))
 }
 
-#TODO the default prob
 #' @export
-compute_rewiring_robustness <- function(discrete_bifurcation_result, p_elementary = 0.001) {
+compute_rewiring_robustness <- function(discrete_bifurcation_result, p_elementary = 0.1) {
   parametrisation_count <- nrow(discrete_bifurcation_result$discrete_bifurcation)
 
   probabilities_sum <- 0
@@ -93,9 +106,8 @@ compute_rewiring_robustness <- function(discrete_bifurcation_result, p_elementar
   return(robustness)
 }
 
-#TODO experiment with this?
 #' @export
-bifurcation_plot <- function(discrete_bifurcation_result) {
+bifurcation_plot <- function(discrete_bifurcation_result, poly_regression_degree = 0, main = "") {
   distance_max <- discrete_bifurcation_result$parameter_count
 
   distance <- discrete_bifurcation_result$discrete_bifurcation$rewiring_distance
@@ -104,9 +116,13 @@ bifurcation_plot <- function(discrete_bifurcation_result) {
   plot(distance, attractor_landscape_similarity,
        xlim=c(0, distance_max), ylim=c(0, 1),
        xlab = "Rewiring distance", ylab = "Attractor landscape similarity",
-       col = rgb(red = 0, green = 0, blue = 1, alpha = 0.2))
+       col = rgb(red = 0, green = 0, blue = 1, alpha = 0.2),
+       main = main)
 
-  #abline(lm(attractor_landscape_similarity ~ distance))
+  if (poly_regression_degree > 0) {
+    fit <- lm(attractor_landscape_similarity ~ poly(distance, poly_regression_degree))
+    lines(sort(distance), fitted(fit)[order(distance)], col='red')
+  }
 }
 
 # Get the attractor landscape of a given parametrisation in the form of attractors list
