@@ -1,0 +1,520 @@
+# copies and copyright-notice
+#
+#      regulondb is free for academic/noncommercial use
+#
+#      user is not entitled to change or erase data sets of the regulondb
+#      database or to eliminate copyright notices from regulondb. furthermore,
+#      user is not entitled to expand regulondb or to integrate regulondb partly
+#      or as a whole into other databank systems, without prior written consent
+#      from ccg-unam.
+#
+#      please check the license at http://regulondb.ccg.unam.mx/menu/download/full_version/terms_and_conditions.jsp
+#
+# citation
+#
+#      santos-zavaleta a et al. (2019). regulondb v 10.5: tackling challenges to unify classic and high throughput knowledge of gene regulation in e. coli k-12.,
+#      nucleic acids res. 2019 jan 8;47(d1):d212-d220. doi: 10.1093/nar/gky1077.
+#
+#
+# contact
+#
+#      person: regulondb team
+#      web page: http://regulondb.ccg.unam.mx/menu/about_regulondb/contact_us/index.jsp
+#          (regulondb@ccg.unam.mx)
+#
+#
+# release: 10.7 date: 05/04/2020
+# ___________________________________________________________________________
+#
+# columns:
+#  (1) transcription factor (tf) name
+#  (2) tf  regulated by tf
+#  (3) regulatory effect of the tf on the regulated gene (+ activator, - repressor, +- dual, ? unknown)
+#  (4) evidence that supports the existence of the regulatory interaction
+#  (5) evidence type [weak, strong, confirmed] for details see: http://regulondb.ccg.unam.mx/evidenceclassification
+#
+accb	accb	repressor	[gea, imp]	weak
+acrr	acrr	repressor	[aibscs, apiorcisfbscs, bce, bpp, gea]	strong
+acrr	flhc	repressor	[apiorcisfbscs, gea]	weak
+acrr	flhd	repressor	[apiorcisfbscs, gea]	weak
+acrr	mara	repressor	[apiorcisfbscs, bpp, gea]	strong
+acrr	marr	repressor	[apiorcisfbscs, bpp, gea]	strong
+acrr	soxr	repressor	[apiorcisfbscs, bpp, gea]	strong
+acrr	soxs	repressor	[apiorcisfbscs, bpp, gea]	strong
+ada	ada	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+ada	ada	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+ada	aidb	activator	[apiorcisfbscs, bpp, gea]	strong
+adiy	gadx	activator	[bpp]	strong
+agar	agar	repressor	[apiorcisfbscs, bpp, gea]	strong
+aidb	aidb	repressor	[bpp, gea]	strong
+alas	alas	repressor	[bpp, gea]	strong
+allr	alls	repressor	[bce, bpp, gea, sm]	strong
+alsr	alsr	repressor	[cv(gea/gs), gea, gs]	strong
+arac	arac	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+arac	arac	repressor	[apiorcisfbscs, bce, bpp, gea, sm]	strong
+arca	appy	activator	[aibscs]	weak
+arca	beti	repressor	[bce, gea]	weak
+arca	dpia	activator	[aibscs]	weak
+arca	fnr	repressor	[gea]	weak
+arca	gade	activator	[bpp, gea]	strong
+arca	gadx	activator	[aibscs, gea]	weak
+arca	lldr	repressor	[aibscs, apiorcisfbscs, bpp, gea]	strong
+arca	puur	repressor	[aibscs, gea]	weak
+arca	xylr	activator	[aibscs, gea]	weak
+argp	argp	repressor	[apiorcisfbscs, gea, ic]	weak
+argp	dnaa	activator	[bpp, gea, ic]	strong
+argr	argr	repressor	[aibscs, apiorcisfbscs, bpp, gea]	strong
+arsr	arsr	repressor	[aibscs, bpp, gea]	strong
+ascg	prpr	repressor	[aibscs, bpp, gea]	strong
+asnc	asnc	repressor	[aibscs, gea]	weak
+baer	baer	activator	[aibscs, bpp, gea]	strong
+basr	csgd	activator	[apiorcisfbscs, bpp, gea]	strong
+basr	puta	repressor	[apiorcisfbscs, bpp]	strong
+basr	qseb	activator	[bpp, gea]	strong
+beti	beti	repressor	[apiorcisfbscs, bpp, cv(gea/gs), gea, gs]	strong
+crp	arac	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+crp	caif	activator	[bce, gea]	weak
+crp	chbr	activator	[aibscs, apiorcisfbscs, bpp, gea]	strong
+crp	comr	repressor	[apiorcisfbscs, bpp, gea]	strong
+crp	crp	activator	[apiorcisfbscs, bpp, sm]	strong
+crp	crp	repressor	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+crp	csgd	activator	[aibscs, gea]	weak
+crp	csqr	activator	[bpp, gea, mcibspd]	strong
+crp	csqr	repressor	[bpp, gea, mcibspd]	strong
+crp	cytr	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	cytr	repressor	[apiorcisfbscs, bpp, gea]	strong
+crp	dcur	activator	[apiorcisfbscs, bpp]	strong
+crp	dgor	activator	[aibscs, bpp, gea, sm]	strong
+crp	dpia	repressor	[aibscs]	weak
+crp	exur	repressor	[apiorcisfbscs, gea]	weak
+crp	fear	activator	[apiorcisfbscs]	weak
+crp	fis	activator	[aibscs, bpp, gea]	strong
+crp	fis	repressor	[bpp, gea]	strong
+crp	flhc	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	flhd	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	fucr	activator	[aibscs, bpp, gea, sm]	strong
+crp	fur	activator	[apiorcisfbscs, sm]	strong
+crp	gade	repressor	[apiorcisfbscs, bpp]	strong
+crp	gadx	repressor	[apiorcisfbscs, gea]	weak
+crp	gals	activator	[aibscs, apiorcisfbscs, bce, gea]	weak
+crp	glcc	activator	[aibscs, gea]	weak
+crp	glng	activator	[apiorcisfbscs]	weak
+crp	glng	repressor	[aibscs, bpp, gea]	strong
+crp	glpr	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	gutm	activator	[aibscs, gea]	weak
+crp	hicb	activator	[apiorcisfbscs, gea]	weak
+crp	hupa	activator	[bpp, gea]	strong
+crp	hupb	activator	[bpp, gea]	strong
+crp	hyfr	activator	[aibscs, apiorcisfbscs, gea]	weak
+crp	idnr	activator	[aibscs, apiorcisfbscs, gea]	weak
+crp	laci	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	lsrr	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+crp	mali	activator	[aibscs, bce, bpp, gea, sm]	strong
+crp	mali	repressor	[aibscs, bpp, gea, sm]	strong
+crp	malt	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	mara	activator	[aibscs, gea, imp]	weak
+crp	marr	activator	[aibscs, gea, imp]	weak
+crp	maze	activator	[apiorcisfbscs, bpp, sm]	strong
+crp	mazf	activator	[apiorcisfbscs, bpp, sm]	strong
+crp	melr	activator	[aibscs, apiorcisfbscs, bpp, gea]	strong
+crp	mhpr	activator	[apiorcisfbscs, bpp, gea]	strong
+crp	mlc	activator	[aibscs, apiorcisfbscs, gea]	weak
+crp	mlc	repressor	[aibscs, apiorcisfbscs, gea]	weak
+crp	nagc	activator	[apiorcisfbscs, bce, bpp, gea]	strong
+crp	nagc	repressor	[apiorcisfbscs, bce, bpp, gea]	strong
+crp	ompr	activator	[apiorcisfbscs, bpp, sm]	strong
+crp	ompr	repressor	[apiorcisfbscs, bpp, sm]	strong
+crp	oxyr	activator	[apiorcisfbscs, gea]	weak
+crp	pdhr	activator	[aibscs, apiorcisfbscs, gea]	weak
+crp	prpr	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+crp	puur	repressor	[apiorcisfbscs, iep]	weak
+crp	rbsr	activator	[aibscs, gea]	weak
+crp	rhar	activator	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+crp	rhas	activator	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+crp	srlr	activator	[aibscs, gea]	weak
+crp	tdca	activator	[apiorcisfbscs, bce, bpp, gea, sm]	strong
+crp	uxur	activator	[apiorcisfbscs, gea]	weak
+crp	xylr	activator	[aibscs, apiorcisfbscs, gea]	weak
+crp	yiaj	repressor	[apiorcisfbscs, bpp, gea]	strong
+crp	zrar	activator	[aibscs, gea]	weak
+crp-sxy	sxy	activator	[apiorcisfbscs, gea]	weak
+cadc	cadc	activator	[gea]	weak
+cdar	cdar	activator	[gea]	weak
+cecr	cecr	repressor	[apiorcisfbscs, bpp, cv(gea/gs), gea, gs]	strong
+chbr	chbr	activator	[bpp, gea]	strong
+chbr	chbr	repressor	[bpp, gea]	strong
+cpxr	baer	activator	[bpp, gea, ic]	strong
+cpxr	cpxr	activator	[apiorcisfbscs, bpp, gea]	strong
+cpxr	csgd	repressor	[apiorcisfbscs, bpp, gea]	strong
+cpxr	mara	activator	[apiorcisfbscs, bpp, gea]	strong
+cpxr	marr	activator	[apiorcisfbscs, bpp, gea]	strong
+cra	beti	activator	[gea]	weak
+cra	crp	activator	[bpp, gea, sm]	strong
+cra	csgd	activator	[aibscs, bpp, gea, sm]	strong
+cra	glcc	repressor	[aibscs, gea]	weak
+cra	mara	repressor	[aibscs, gea]	weak
+cra	marr	repressor	[aibscs, gea]	weak
+cra	pdel	repressor	[aibscs, apiorcisfbscs, bpp, gea]	strong
+cra	pdhr	repressor	[aibscs, gea]	weak
+csgd	csgd	activator	[apiorcisfbscs, bpp, gea]	strong
+csgd	fliz	repressor	[aibscs, bpp]	strong
+cspa	hns	activator	[bpp]	strong
+csqr	csqr	repressor	[bpp, cv(gea/gs), gea, gs]	strong
+cusr	cusr	activator	[apiorcisfbscs, bpp, gea]	strong
+cynr	cynr	repressor	[apiorcisfbscs, bpp]	strong
+cysb	cbl	activator	[bpp, gea]	strong
+cysb	cysb	repressor	[apiorcisfbscs]	weak
+cytr	cytr	repressor	[apiorcisfbscs, bpp, gea, ic]	strong
+dan	ttdr	activator	[bpp]	strong
+dcur	dpia	activator	[apiorcisfbscs, bpp]	strong
+dgor	dgor	repressor	[aibscs, aibspd, bpp, gea, sm]	strong
+dhar	dhar	repressor	[gea]	weak
+dinj-yafq	dinj	repressor	[apiorcisfbscs, bpp, sm]	strong
+dinj-yafq	yafq	repressor	[apiorcisfbscs, bpp, sm]	strong
+dnaa	dnaa	activator	[bpp, sm]	strong
+dnaa	dnaa	repressor	[bpp, gea, sm]	strong
+dpia	appy	repressor	[apiorcisfbscs, gea]	weak
+dpia	dpia	activator	[apiorcisfbscs, bpp, gea]	strong
+dsdc	dsdc	repressor	[gea]	weak
+evga	evga	activator	[aibscs, apiorcisfbscs, bpp, gea]	strong
+evga	gade	activator	[bpp, gea]	strong
+evga	ydeo	activator	[aibscs, bpp, gea]	strong
+exur	exur	repressor	[apiorcisfbscs, bpp, gea]	strong
+exur	uxur	repressor	[aibscs, gea]	weak
+fnr	arca	activator	[apiorcisfbscs, gea]	weak
+fnr	arca	repressor	[apiorcisfbscs, gea]	weak
+fnr	cadc	activator	[aibscs, gea]	weak
+fnr	caif	activator	[bce, gea]	weak
+fnr	dcur	activator	[aibscs, gea]	weak
+fnr	dpia	repressor	[aibscs]	weak
+fnr	fhla	activator	[bce, bpp, gea]	strong
+fnr	fnr	repressor	[apiorcisfbscs, bce, bpp, gea]	strong
+fnr	gadw	repressor	[aibscs, gea]	weak
+fnr	gadx	repressor	[aibscs, gea]	weak
+fnr	hyfr	repressor	[apiorcisfbscs, gea]	weak
+fnr	nac	repressor	[gea]	weak
+fnr	narl	repressor	[apiorcisfbscs, bce, bpp]	strong
+fnr	nfer	activator	[aibscs, gea]	weak
+fnr	nikr	activator	[apiorcisfbscs, gea, sm]	strong
+fnr	pdhr	activator	[aibscs, bce, gea]	weak
+fnr	pdhr	repressor	[aibscs, bce, gea]	weak
+fnr	soxr	repressor	[gea]	weak
+fnr	soxs	repressor	[gea]	weak
+fnr	tdca	activator	[aibscs, gea]	weak
+fnr	yeil	repressor	[apiorcisfbscs, gea]	weak
+fadr	accb	activator	[aibscs, bpp, gea]	strong
+fadr	fadr	activator	[aibscs]	weak
+fadr	iclr	activator	[bpp, gea, sm]	strong
+fhla	fhla	activator	[apiorcisfbscs, bpp, gea]	strong
+fhla	hyfr	activator	[gea]	weak
+fis	crp	repressor	[apiorcisfbscs, bpp, gea]	strong
+fis	cspa	activator	[aibscs, bpp, gea]	strong
+fis	fis	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+fis	gadx	repressor	[aibscs, gea]	weak
+fis	glcc	repressor	[aibscs, gea]	weak
+fis	glng	activator	[aibscs, bpp, gea]	strong
+fis	hns	activator	[bpp]	strong
+fis	hupa	activator	[bpp, gea]	strong
+fis	hupb	repressor	[bpp, gea]	strong
+fis	mara	activator	[bpp, gea, sm]	strong
+fis	marr	activator	[bpp, gea, sm]	strong
+fis	maze	activator	[bpp, gea, sm]	strong
+fis	mazf	activator	[bpp, gea, sm]	strong
+fis	xylr	repressor	[aibscs, gea]	weak
+flhdc	fliz	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+fliz	csgd	repressor	[bpp, gea]	strong
+fliz	flhc	repressor	[bpp, gea]	strong
+fliz	flhd	repressor	[bpp, gea]	strong
+fliz	gade	repressor	[bpp, gea, sm]	strong
+fliz	mlra	repressor	[bpp, gea, sm]	strong
+fucr	fucr	activator	[gea]	weak
+fur	flhc	repressor	[aibscs]	weak
+fur	flhd	repressor	[aibscs]	weak
+fur	fnr	repressor	[gea]	weak
+fur	fur	repressor	[apiorcisfbscs, bpp]	strong
+fur	metj	repressor	[aibscs]	weak
+fur	nac	repressor	[gea]	weak
+fur	purr	repressor	[aibscs]	weak
+fur	soxr	repressor	[gea]	weak
+fur	soxs	repressor	[gea]	weak
+gade	gade	activator	[apiorcisfbscs, bpp, gea]	strong
+gade	gadw	activator	[bpp, gea]	strong
+gade	gadx	activator	[bpp, gea]	strong
+gade	lrp	activator	[gea]	weak
+gade	rcsa	activator	[bpp, gea]	strong
+gade-rcsb	gadx	activator	[apiorcisfbscs, bpp, ceuma, gea, ihbce, re, sm]	strong
+gadw	gade	activator	[aibscs, apiorcisfbscs, gea]	weak
+gadw	gadw	repressor	[gea]	weak
+gadw	gadx	activator	[apiorcisfbscs, bpp, gea]	strong
+gadw	gadx	repressor	[apiorcisfbscs, bpp, gea]	strong
+gadx	gade	activator	[aibscs, apiorcisfbscs, bpp, gea]	strong
+gadx	gadw	activator	[gea]	weak
+gadx	gadw	repressor	[ceuma, gea, ihbce, re]	weak
+gadx	gadx	activator	[apiorcisfbscs, bpp, gea]	strong
+gadx	hns	activator	[gea]	weak
+galr	galr	repressor	[apiorcisfbscs, bpp, gea]	strong
+galr	gals	repressor	[apiorcisfbscs, gea]	weak
+gals	galr	repressor	[apiorcisfbscs, gea]	weak
+gals	gals	repressor	[bce, gea]	weak
+gcva	gcva	repressor	[aibscs, apiorcisfbscs, bce, bpp, gea, ic, sm]	strong
+glcc	glcc	repressor	[bce, gea, sm]	strong
+gntr	idnr	repressor	[aibscs, apiorcisfbscs, gea]	weak
+gutm	gutm	activator	[gea]	weak
+gutm	srlr	activator	[gea]	weak
+h-ns	adiy	repressor	[bpp]	strong
+h-ns	appy	repressor	[bpp, gea]	strong
+h-ns	bglj	repressor	[bpp]	strong
+h-ns	bola	repressor	[gea]	weak
+h-ns	cadc	repressor	[bpp]	strong
+h-ns	caif	repressor	[gea]	weak
+h-ns	csgd	repressor	[bpp, gea]	strong
+h-ns	cspa	repressor	[aibscs, bpp, gea]	strong
+h-ns	evga	repressor	[bpp]	strong
+h-ns	flhc	activator	[bpp, gea]	strong
+h-ns	flhd	activator	[bpp, gea]	strong
+h-ns	fliz	activator	[gea, imp]	weak
+h-ns	gade	repressor	[bpp]	strong
+h-ns	gadw	repressor	[bpp, gea]	strong
+h-ns	gadx	repressor	[bpp, gea]	strong
+h-ns	gutm	activator	[gea]	weak
+h-ns	hdfr	repressor	[bpp]	strong
+h-ns	hns	repressor	[apiorcisfbscs, bpp, gea]	strong
+h-ns	leuo	repressor	[apiorcisfbscs, bpp, gea]	strong
+h-ns	lrp	repressor	[bpp, gea]	strong
+h-ns	maze	activator	[gea]	weak
+h-ns	mazf	activator	[gea]	weak
+h-ns	nhar	repressor	[gea]	weak
+h-ns	rcsa	repressor	[gea, icwho]	weak
+h-ns	rcsb	repressor	[bpp]	strong
+h-ns	srlr	activator	[gea]	weak
+h-ns	stpa	repressor	[bce, bpp, gea]	strong
+h-ns	ydeo	repressor	[bpp]	strong
+h-ns	yjjq	repressor	[bpp]	strong
+hcar	hcar	repressor	[aibscs, bpp, gea]	strong
+hdfr	flhc	repressor	[bpp, gea]	strong
+hdfr	flhd	repressor	[bpp, gea]	strong
+hicb	hicb	repressor	[bpp, gea, sm]	strong
+higa	higa	repressor	[bpp, ihbce]	strong
+higa	higb	repressor	[bpp, ihbce]	strong
+higba	higa	repressor	[bpp, ihbce]	strong
+higba	higb	repressor	[bpp, ihbce]	strong
+hipab	hipa	repressor	[apiorcisfbscs, bpp, gea]	strong
+hipab	hipb	repressor	[apiorcisfbscs, bpp, gea]	strong
+hipab	maze	repressor	[bpp, gea]	strong
+hipab	mazf	repressor	[bpp, gea]	strong
+hipb	hipa	repressor	[apiorcisfbscs, bpp, gea]	strong
+hipb	hipb	repressor	[apiorcisfbscs, bpp, gea]	strong
+hipb	maze	repressor	[aibscs, bpp, gea]	strong
+hipb	mazf	repressor	[aibscs, bpp, gea]	strong
+hprr	cusr	activator	[apiorcisfbscs, bpp]	strong
+hyfr	hyfr	activator	[aibscs, gea]	weak
+ihf	csgd	activator	[bpp, gea]	strong
+ihf	fhla	activator	[apiorcisfbscs, bpp, gea]	strong
+ihf	fis	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+ihf	flhc	repressor	[apiorcisfbscs]	weak
+ihf	flhd	repressor	[apiorcisfbscs]	weak
+ihf	fliz	repressor	[gea, ihbce, sm]	strong
+ihf	fnr	activator	[bpp, gea, sm]	strong
+ihf	hipa	activator	[apiorcisfbscs]	weak
+ihf	hipb	activator	[apiorcisfbscs]	weak
+ihf	ihfa	repressor	[apiorcisfbscs, bpp]	strong
+ihf	ihfb	repressor	[bpp, gea]	strong
+ihf	ompr	repressor	[bpp, sm]	strong
+ihf	tdca	activator	[apiorcisfbscs, bce, bpp, sm]	strong
+ihf	yeil	activator	[apiorcisfbscs, gea]	weak
+ihf	yiaj	repressor	[apiorcisfbscs, bpp]	strong
+iclr	iclr	repressor	[apiorcisfbscs, bpp, gea]	strong
+idnr	idnr	activator	[aibscs, gea]	weak
+ilvy	ilvy	repressor	[apiorcisfbscs, bce, bpp, gea, ic]	strong
+iscr	iscr	repressor	[bpp, gea, sm]	strong
+leuo	bglj	activator	[bpp]	strong
+leuo	cadc	repressor	[gea]	weak
+leuo	leuo	activator	[aibscs, bpp, cv(gea/gs), gea, gs, ic]	strong
+leuo	leuo	repressor	[aibscs, bpp, cv(gea/gs), gea, gs, ic]	strong
+leuo	yjjq	activator	[bpp]	strong
+lexa	dinj	repressor	[aibscs, gea]	weak
+lexa	lexa	repressor	[apiorcisfbscs, bpp]	strong
+lexa	uvry	repressor	[aibscs, gea]	weak
+lexa	yafq	repressor	[aibscs, gea]	weak
+lldr	lldr	activator	[aibscs, bpp, gea, sm]	strong
+lldr	lldr	repressor	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+lrha	flhc	repressor	[bpp, gea]	strong
+lrha	flhd	repressor	[bpp, gea]	strong
+lrha	leuo	activator	[bpp, gea]	strong
+lrha	lrha	activator	[bpp, gea]	strong
+lrp	aidb	repressor	[apiorcisfbscs, bpp]	strong
+lrp	lrp	repressor	[aibscs, apiorcisfbscs, bce, gea, sm]	strong
+lrp	malt	activator	[gea]	weak
+lrp	stpa	activator	[apiorcisfbscs, bce, bpp, gea]	strong
+lrp	yeil	activator	[apiorcisfbscs, gea]	weak
+lsrr	lsrr	repressor	[bpp, gea, sm]	strong
+lysr	lysr	repressor	[gea]	weak
+mali	mali	repressor	[bce, gea, sm]	strong
+mara	decr	activator	[aibscs]	weak
+mara	mara	activator	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+mara	marr	activator	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+mara	puta	activator	[gea]	weak
+mara	rob	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+marr	mara	repressor	[aibscs, apiorcisfbscs, bpp, cv(gea/gs), cv(gea/sm/gs), gea, gs, sm]	confirmed
+marr	marr	repressor	[aibscs, apiorcisfbscs, bpp, cv(gea/gs), cv(gea/sm/gs), gea, gs, sm]	confirmed
+mata	ecpr	activator	[bpp]	strong
+mata	flhc	repressor	[bpp, gea]	strong
+mata	flhd	repressor	[bpp, gea]	strong
+mata	fliz	repressor	[bpp]	strong
+maze	maze	repressor	[bce, gea, sm]	strong
+maze	mazf	repressor	[bce, gea, sm]	strong
+maze-mazf	maze	repressor	[bce, gea, sm]	strong
+maze-mazf	mazf	repressor	[bce, gea, sm]	strong
+melr	melr	activator	[bpp, gea, sm]	strong
+melr	melr	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+metj	metr	repressor	[bpp]	strong
+metr	metr	repressor	[apiorcisfbscs, bpp, gea]	strong
+mlc	malt	repressor	[apiorcisfbscs, bce, gea]	weak
+mlc	mlc	repressor	[apiorcisfbscs, bce, gea]	weak
+mlra	cadc	activator	[apiorcisfbscs, bpp]	strong
+mlra	csgd	activator	[bpp, gea]	strong
+mngr	mngr	repressor	[apiorcisfbscs, bpp, gea]	strong
+mode	narl	activator	[apiorcisfbscs, bpp, gea]	strong
+mpra	mpra	repressor	[bpp]	strong
+mqsa	csgd	repressor	[apiorcisfbscs, bpp, gea]	strong
+mqsa	mqsa	repressor	[apiorcisfbscs, bpp, ihbce]	strong
+mraz	mraz	repressor	[aibscs, bpp, gea, sm]	strong
+murr	murr	activator	[apiorcisfbscs, gea]	weak
+murr	murr	repressor	[apiorcisfbscs, gea]	weak
+nac	asnc	repressor	[apiorcisfbscs, gea]	weak
+nac	fear	activator	[ihbce]	weak
+nac	nac	repressor	[apiorcisfbscs, bpp, gea]	strong
+nagc	chbr	repressor	[aibscs, apiorcisfbscs, bpp, gea, sm]	strong
+nagc	creb	repressor	[aibscs]	weak
+nagc	nagc	repressor	[bpp, gea, sm]	strong
+narl	caif	repressor	[gea]	weak
+narl	dcur	repressor	[apiorcisfbscs, bpp, gea]	strong
+narl	dpia	repressor	[aibscs]	weak
+narl	nikr	repressor	[gea]	weak
+nemr	nemr	repressor	[aibscs, bpp, gea]	strong
+nfer	nfer	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+nhar	nhar	activator	[bce, bpp, gea]	strong
+nikr	nikr	repressor	[bpp]	strong
+nimr	nimr	repressor	[bpp, cv(gea/gs), gea, gs, icwho]	strong
+norr	norr	repressor	[aibscs, bpp, gea]	strong
+nsrr	dsdc	repressor	[apiorcisfbscs, gea]	weak
+nsrr	fear	repressor	[apiorcisfbscs, gea]	weak
+nsrr	fhla	repressor	[apiorcisfbscs, gea]	weak
+nsrr	fliz	repressor	[apiorcisfbscs, gea, sm]	strong
+nsrr	ihfa	repressor	[apiorcisfbscs, gea]	weak
+nsrr	lrp	repressor	[apiorcisfbscs, gea]	weak
+nsrr	norr	repressor	[apiorcisfbscs, gea]	weak
+ntrc	cbl	activator	[gea]	weak
+ntrc	glng	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+ntrc	glng	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+ntrc	nac	activator	[apiorcisfbscs]	weak
+ompr	bola	repressor	[apiorcisfbscs, bpp]	strong
+ompr	cadc	repressor	[bpp, gea]	strong
+ompr	csgd	activator	[apiorcisfbscs, bpp, gea]	strong
+ompr	flhc	repressor	[apiorcisfbscs]	weak
+ompr	flhd	repressor	[apiorcisfbscs]	weak
+oxyr	fur	activator	[apiorcisfbscs, bpp, ceuma, gea, ihbce, re]	strong
+oxyr	metr	activator	[ceuma, ihbce, re]	weak
+oxyr	oxyr	repressor	[apiorcisfbscs, bpp, ceuma, gea, ihbce, re]	strong
+paax	paax	repressor	[apiorcisfbscs, bpp]	strong
+pdel	pdel	activator	[bpp, gea, ihbce]	strong
+pdhr	mraz	repressor	[aibscs, bpp, gea]	strong
+pdhr	pdhr	repressor	[aibscs, apiorcisfbscs, bce, bpp, gea]	strong
+pepa	pepa	repressor	[bpp]	strong
+pgrr	tyrr	repressor	[bpp, gea, igi]	strong
+phob	argp	activator	[apiorcisfbscs, gea]	weak
+phob	cra	repressor	[gea]	weak
+phob	cusr	activator	[apiorcisfbscs, bpp, gea]	strong
+phob	fear	repressor	[apiorcisfbscs, bpp, gea]	strong
+phob	gadw	activator	[gea]	weak
+phob	gadx	activator	[gea]	weak
+phob	phob	activator	[apiorcisfbscs, bpp, gea]	strong
+phob	prpr	repressor	[apiorcisfbscs, bpp, gea]	strong
+phob	ydfh	activator	[apiorcisfbscs, bpp, gea]	strong
+phop	cysb	activator	[aibscs, apiorcisfbscs]	weak
+phop	gade	activator	[apiorcisfbscs, gea]	weak
+phop	gadw	activator	[apiorcisfbscs, bpp, gea]	strong
+phop	phop	activator	[aibscs, apiorcisfbscs, bpp, gea]	strong
+phop	phop	repressor	[aibscs, apiorcisfbscs, bpp, gea]	strong
+phop	rsta	activator	[aibscs, apiorcisfbscs, bpp, gea]	strong
+phop	trer	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+phop	ydeo	repressor	[apiorcisfbscs, gea, sm]	strong
+prpr	prpr	repressor	[apiorcisfbscs, gea]	weak
+pspf	pspf	repressor	[bce, bpp, gea]	strong
+purr	purr	repressor	[apiorcisfbscs, bce, bpp, gea, sm]	strong
+puta	puta	repressor	[bpp, gea, sm]	strong
+puur	puur	repressor	[bpp, gea, ic, sm]	strong
+qseb	fear	activator	[aibscs, gea]	weak
+qseb	fear	repressor	[aibscs, gea]	weak
+qseb	flhc	activator	[gea]	weak
+qseb	flhd	activator	[gea]	weak
+qseb	qseb	activator	[bpp, gea]	strong
+rbsr	rbsr	repressor	[aibscs, bpp, gea]	strong
+rcda	csgd	activator	[bpp, gea, ic]	strong
+rcnr	rcnr	repressor	[bpp, gea]	strong
+rcsab	csgd	repressor	[gea]	weak
+rcsab	flhc	repressor	[bpp, gea, sm]	strong
+rcsab	flhd	repressor	[bpp, gea, sm]	strong
+rcsab	rcsa	activator	[aibscs, bce, bpp, gea, sm]	strong
+rcsb	gadx	repressor	[bpp, gea, ihbce, sm]	strong
+rcsb	ydeo	activator	[gea]	weak
+rcsb-bglj	leuo	activator	[apiorcisfbscs, gea, sm]	strong
+relb	relb	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+relb	rele	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+relb-rele	relb	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+relb-rele	rele	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+rhar	rhar	activator	[apiorcisfbscs, bce, bpp, gea]	strong
+rhar	rhas	activator	[apiorcisfbscs, bce, bpp, gea]	strong
+rhas	rhar	activator	[bpp, gea]	strong
+rhas	rhar	unknown	[apiorcisfbscs, bpp]	strong
+rhas	rhas	activator	[bpp, gea]	strong
+rhas	rhas	unknown	[apiorcisfbscs, bpp]	strong
+rob	mara	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+rob	marr	activator	[apiorcisfbscs, bpp, gea, sm]	strong
+rob	rob	repressor	[apiorcisfbscs, bpp, gea]	strong
+rsta	csgd	repressor	[apiorcisfbscs, bpp, gea]	strong
+rutr	gadw	repressor	[bpp, gea]	strong
+rutr	gadx	repressor	[bpp, gea]	strong
+rutr	nemr	repressor	[aibscs, bpp, gea]	strong
+rutr	rutr	repressor	[aibscs, bpp, gea, sm]	strong
+sdia	gadw	activator	[gea]	weak
+sgrr	sgrr	repressor	[apiorcisfbscs, bpp, gea, sm]	strong
+slya	leuo	activator	[aibscs, bpp, gea]	strong
+soxr	soxr	repressor	[bpp, ceuma, chip-sv, gea, ihbce, msi, re]	strong
+soxr	soxs	activator	[bpp, ceuma, gea, ihbce, re]	strong
+soxs	decr	activator	[ceuma, ihbce, re]	weak
+soxs	fur	activator	[apiorcisfbscs, bpp, ce, ceuma, gea, ihbce, re]	strong
+soxs	mara	activator	[apiorcisfbscs, bpp, gea]	strong
+soxs	marr	activator	[apiorcisfbscs, bpp, gea]	strong
+soxs	rob	repressor	[apiorcisfbscs, bpp]	strong
+soxs	soxs	repressor	[bpp, ceuma, gea, ihbce, re]	strong
+srlr	gutm	repressor	[gea]	weak
+srlr	srlr	repressor	[gea]	weak
+stpa	leuo	repressor	[gea]	weak
+stpa	stpa	repressor	[gea]	weak
+sutr	fliz	repressor	[aibscs, bpp, gea]	strong
+sutr	sutr	activator	[apiorcisfbscs, bpp, gea]	strong
+sutr	sutr	repressor	[apiorcisfbscs, bpp, gea]	strong
+tdca	tdca	activator	[bce, gea, sm]	strong
+tdcr	tdca	activator	[bce, sm]	strong
+torr	gadx	repressor	[aibscs, gea]	weak
+torr	torr	repressor	[apiorcisfbscs, bce, bpp, cv(gea/gs), cv(gea/sm/gs), gea, gs, sm]	confirmed
+trpr	trpr	repressor	[apiorcisfbscs, bpp, gea]	strong
+tyrr	tyrr	repressor	[apiorcisfbscs, gea]	weak
+uidr	uidr	repressor	[gea]	weak
+uxur	exur	repressor	[apiorcisfbscs, bpp, gea]	strong
+uxur	uxur	repressor	[aibscs, gea]	weak
+xylr	arac	repressor	[aibscs, bpp, gea]	strong
+xylr	xylr	activator	[apiorcisfbscs, bpp, gea]	strong
+ydeo	gade	activator	[bpp, gea, ihbce]	strong
+ydeo	gadw	activator	[bpp, gea, ihbce]	strong
+ydeo	ydeo	repressor	[gea]	weak
+yefm	yefm	repressor	[apiorcisfbscs, bpp, gea]	strong
+yefm	yoeb	repressor	[apiorcisfbscs, bpp, gea]	strong
+yefm-yoeb	yefm	repressor	[apiorcisfbscs, bpp, gea]	strong
+yefm-yoeb	yoeb	repressor	[apiorcisfbscs, bpp, gea]	strong
+yeil	yeil	activator	[gea]	weak
+yiaj	yiaj	repressor	[bce, gea]	weak
+yjjq	flhc	repressor	[aibscs, gea, sm]	strong
+yjjq	flhd	repressor	[aibscs, gea, sm]	strong
+zrar	zrar	activator	[apiorcisfbscs, bpp, gea]	strong

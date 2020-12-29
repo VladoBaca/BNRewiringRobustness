@@ -18,7 +18,8 @@ Imports:
     doParallel,
     iterators,
     lpSolve,
-    parallel
+    parallel,
+    tidyverse
 Depends:
     foreach
 Suggests: 

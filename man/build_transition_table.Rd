@@ -3,11 +3,11 @@
 \name{build_transition_table}
 \alias{build_transition_table}
 \title{Build the transition table in the form of an matrix:
-line = index of the (all-genes) state (binary+1), row = (instance-gene)}
+row = index of the (all-genes) state (binary+1), col = (instance-gene)}
 \usage{
 build_transition_table(instance, all_genes)
 }
 \description{
 Build the transition table in the form of an matrix:
-line = index of the (all-genes) state (binary+1), row = (instance-gene)
+row = index of the (all-genes) state (binary+1), col = (instance-gene)
 }

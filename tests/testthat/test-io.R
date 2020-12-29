@@ -1,7 +1,7 @@
 context("IO functionality of the package")
 
 test_that("load_BN correctly loads the Boolean networks", {
-  fb_minus_net = load_BN(system.file("examples", "motifs", "fb_minus.bn", package = "BNRewiringRobustness"))
+  fb_minus_net <- load_BN(system.file("examples", "motifs", "fb_minus.bn", package = "BNRewiringRobustness"))
 
   expect_equivalent(fb_minus_net$genes, c("A", "B"))
   expect_equivalent(fb_minus_net$fixed, c(-1, -1))
@@ -10,7 +10,7 @@ test_that("load_BN correctly loads the Boolean networks", {
   expect_equivalent(fb_minus_net$interactions$B$input, c(1))
   expect_equivalent(fb_minus_net$interactions$B$func, c(0, 1))
 
-  ffl_c_1 = load_BN(system.file("examples", "motifs", "ffl_c1.bn", package = "BNRewiringRobustness"))
+  ffl_c_1 <- load_BN(system.file("examples", "motifs", "ffl_c1.bn", package = "BNRewiringRobustness"))
 
   expect_equivalent(ffl_c_1$genes, c("A", "B", "C"))
   expect_equivalent(ffl_c_1$fixed, c(-1, -1, -1))
@@ -21,7 +21,7 @@ test_that("load_BN correctly loads the Boolean networks", {
   expect_equivalent(ffl_c_1$interactions$C$input, c(1, 2))
   expect_equivalent(ffl_c_1$interactions$C$func, c(0, 1, 1, 1))
 
-  crm_assymetric = load_BN(system.file("examples", "motifs", "crm_assymetric.bn", package = "BNRewiringRobustness"))
+  crm_assymetric <- load_BN(system.file("examples", "motifs", "crm_assymetric.bn", package = "BNRewiringRobustness"))
 
   expect_equivalent(crm_assymetric$genes, c("A", "B"))
   expect_equivalent(crm_assymetric$fixed, c(-1, -1))

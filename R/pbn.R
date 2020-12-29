@@ -3,15 +3,14 @@
 create_pbn_from_rg <- function(rg) {
   genes <- get_rg_genes(rg)
 
-  gene_function_vectors_full <- parallel_apply(genes, function(gene) {enumerate_gene_function_vectors(rg, gene)})
+  gene_function_vectors_full <- parallel_apply(genes, function(gene) {enumerate_gene_function_vectors(rg, gene)}, seq_threshold = 4)
 
   gene_regulators_indexes <- lapply(gene_function_vectors_full, function(r) match(r$regulators, genes))
 
   gene_function_vectors <- lapply(gene_function_vectors_full, function(r) r$function_vectors)
 
-  function_index_combinations <- expand.grid(lapply(gene_function_vectors, function(p) 1:length(p)))
+  function_index_combinations <- as.matrix(expand.grid(lapply(gene_function_vectors, function(p) 1:length(p))))
 
-  function_index_combinations <- apply(function_index_combinations, 2, (function(x) x))
   function_index_combinations <- unname(tapply(function_index_combinations,
                                                rep(1:nrow(function_index_combinations),
                                                    ncol(function_index_combinations)),function(i)i))

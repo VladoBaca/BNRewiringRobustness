@@ -107,22 +107,21 @@ compute_rewiring_robustness <- function(discrete_bifurcation_result, p_elementar
 }
 
 #' @export
-bifurcation_plot <- function(discrete_bifurcation_result, poly_regression_degree = 0, main = "") {
+bifurcation_plot <- function(discrete_bifurcation_result, main = "") {
+  `%>%` <- magrittr::`%>%`
+
   distance_max <- discrete_bifurcation_result$parameter_count
 
-  distance <- discrete_bifurcation_result$discrete_bifurcation$rewiring_distance
-  attractor_landscape_similarity <- discrete_bifurcation_result$discrete_bifurcation$attractor_landscape_similarity
+  data <- discrete_bifurcation_result$discrete_bifurcation
 
-  plot(distance, attractor_landscape_similarity,
-       xlim=c(0, distance_max), ylim=c(0, 1),
-       xlab = "Rewiring distance", ylab = "Attractor landscape similarity",
-       col = rgb(red = 0, green = 0, blue = 1, alpha = 0.2),
-       main = main)
-
-  if (poly_regression_degree > 0) {
-    fit <- lm(attractor_landscape_similarity ~ poly(distance, poly_regression_degree))
-    lines(sort(distance), fitted(fit)[order(distance)], col='red')
-  }
+  return(data %>%
+    ggplot2::ggplot(ggplot2::aes(x=rewiring_distance, y=attractor_landscape_similarity, group = rewiring_distance,
+               xmin = 0, xmax = distance_max, ymin = 0, ymax = 1)) +
+    ggplot2::geom_boxplot(fill = "gray") +
+    ggplot2::geom_jitter(color="blue", alpha=0.3, width = 0.2, height = 0.01, size = 1.4) +
+    ggplot2::ggtitle(main) +
+    ggplot2::xlab("Rewiring distance") +
+    ggplot2::ylab("Attractor landscape similarity"))
 }
 
 # Get the attractor landscape of a given parametrisation in the form of attractors list
