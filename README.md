@@ -4,7 +4,7 @@ R package for computing quantitative discrete bifurcation and rewiring robustnes
 Installation:
 
     install.packages("remotes")
-    remotes::install_github("VladoBaca/BNRewiringRobustness"
+    remotes::install_github("VladoBaca/BNRewiringRobustness")
 
 Usage example:
 
