@@ -1,3 +1,13 @@
+#' Computes the quantitative discrete bifurcation function of the
+#' given baseline BN in the parametrisation space represented by the given RG.
+#' If necessary, the motif extension is created before computation.
+#' @param bn_baseline_network the baseline BN. Either a file path or a BooleanNetworkin-stance returned by load_BN.
+#' @param rg_rewiring_space the RG representing the parametrisation space. Either a file path or an RG data frame.
+#' @param output_genes the vector of output genes. Must be a subset of genes inbn. If not provided, defaults to BN genes
+#' @param semantics  the BN semantics to be used:"async"or"sync"
+#' @param attractor_similarity the attractor similarity measure to be used:"activity"or"overlap"
+#' @param return_pbn the logical value indicating whether to also return the constructed PBN
+#' @return The table of rewiring distance and attractor landscape similarity for all parametrisations.
 #' @export
 compute_discrete_bifurcation <- function(bn_baseline_network, rg_rewiring_space, output_genes = character(),
                                          semantics = "async", attractor_similarity = "activity", return_pbn = FALSE) {
@@ -40,6 +50,7 @@ compute_discrete_bifurcation <- function(bn_baseline_network, rg_rewiring_space,
   return(result)
 }
 
+#' The inner computation of QDBF.
 compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, output_genes = character(),
                                                semantics = "async", attractor_similarity = "activity") {
 
@@ -67,6 +78,7 @@ compute_discrete_bifurcation_inner <- function(pbn, baseline_parametrisation, ou
   return(discrete_bifurcation)
 }
 
+#' The QDBF copmutation for one given parametrisation
 compute_db_single <- function(index_combination_vector, gene_function_vectors,
                               baseline_parametrisation, baseline_attractor_landscape,
                               output_genes, output_genes_encoder,
@@ -85,6 +97,10 @@ compute_db_single <- function(index_combination_vector, gene_function_vectors,
   return(list(rewiring_distance = rewiring_distance, attractor_landscape_similarity = attractor_landscape_similarity))
 }
 
+#' Computes the phenotype rewiring robustness over the data result-ing from a computation ofcompute_discrete_bifurcation.
+#' @param discrete_bifurcation_result the quantitative discrete bifurcation returned by compute_discrete_bifurcation
+#' @param p_elementary the elementary rewiring probability
+#' @return The value of phenotype rewiring robustness
 #' @export
 compute_rewiring_robustness <- function(discrete_bifurcation_result, p_elementary = 0.1) {
   parametrisation_count <- nrow(discrete_bifurcation_result$discrete_bifurcation)
@@ -106,6 +122,10 @@ compute_rewiring_robustness <- function(discrete_bifurcation_result, p_elementar
   return(robustness)
 }
 
+#' Draws the bifurcation plot for the given data
+#' @param discrete_bifurcation_result the quantitative discrete bifurcation returned by compute_discrete_bifurcation
+#' @param main the title for the plot
+#' @return The bifurcation plot
 #' @export
 bifurcation_plot <- function(discrete_bifurcation_result, main = "") {
   `%>%` <- magrittr::`%>%`
@@ -128,8 +148,8 @@ bifurcation_plot <- function(discrete_bifurcation_result, main = "") {
     ggplot2::ylab("Attractor landscape similarity"))
 }
 
-# Get the attractor landscape of a given parametrisation in the form of attractors list
-# and attractor distribution matrix.
+#' Get the attractor landscape of a given parametrisation in the form of attractors list
+#' and attractor distribution matrix.
 get_attractor_landscape <- function(parametrisation, genes, gene_regulators_indexes, instance_states, pre_to_post, semantics = "async")
 {
   bn <- generate_BN(genes, gene_regulators_indexes, parametrisation)
@@ -143,6 +163,7 @@ get_attractor_landscape <- function(parametrisation, genes, gene_regulators_inde
   return(instance_attractors_info)
 }
 
+#' Process the inputs given to compute_discrete_bifurcation
 process_inputs <- function(bn_baseline_network, rg_rewiring_space, output_genes) {
   if (is_simple_string(bn_baseline_network)) {
     bn <- load_BN(bn_baseline_network)

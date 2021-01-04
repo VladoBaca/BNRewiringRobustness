@@ -1,3 +1,5 @@
+#' Prepares the parallel execution. Creates a cluster for a number of actual CPU cores minus one.
+#' @return the cluster.
 prepare_parallel <- function() {
   num_cores <- max(parallel::detectCores() - 1, 1)
   cluster <- parallel::makePSOCKcluster(num_cores)
@@ -6,6 +8,13 @@ prepare_parallel <- function() {
   return(cluster)
 }
 
+#' Apply a function to all members of a collection parallelly.
+#' @param collection the input collection, either a list or vector
+#' @param fun function to apply
+#' @param packages the string vector of all packages used in the function (necessary!)
+#' @param seq_threshold the threshold, under which sequential execution should be chosen. If 0, it does not apply.
+#' @param log_frequency How often (as per number of processed items in the collection) to log. 0 means no logging
+#' @return The result - a collection of results of function applications to the input collection, in the same order.
 parallel_apply <- function(collection, fun, packages = character(), seq_threshold = 0, log_frequency = 0) {
   log_message <- function(log_file, message) {
     write(paste(Sys.time(),message, sep = "> "), file = log_file, append = TRUE)

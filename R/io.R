@@ -29,6 +29,7 @@ load_RG <- function(file_name) {
   return(rg_df)
 }
 
+#' Is the given input a normal string?
 is_simple_string <- function(input) {
   return(is.character(input) & length(input) == 1)
 }

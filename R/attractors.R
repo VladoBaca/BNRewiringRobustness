@@ -33,7 +33,7 @@ decode_attractor <- function(attractor, pre_to_post) {
   return(sapply(attractor$involvedStates[1,], function(as) pre_to_post[as+1]))
 }
 
-# Get the vector of states membership in attractors.
+#' Get the vector of states membership in attractors.
 compute_attractor_membership_vector <- function(instance, instance_states, attractors) {
   attractor_membership_vector <- rep(0, length(instance_states))
 
@@ -46,7 +46,7 @@ compute_attractor_membership_vector <- function(instance, instance_states, attra
   return(attractor_membership_vector)
 }
 
-# Compute the async attractor distributions of all states in a form of matrix.
+#' Compute the async attractor distributions of all states in a form of matrix.
 compute_attractor_distribution_matrix <- function(instance, instance_states, attractors, attractor_membership_vector) {
 
   # Get rid of self-debt by multiplying the other probabilities appropriately.

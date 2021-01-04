@@ -1,3 +1,4 @@
+#' Computes rewiring distance for two given parametrisations
 compute_rewiring_distance <- function(parametrisation_1, parametrisation_2) {
   distances_per_gene <- sapply(1:length(parametrisation_1),
                                   function(gene_i) sum(abs(parametrisation_1[[gene_i]] - parametrisation_2[[gene_i]])))
@@ -6,6 +7,7 @@ compute_rewiring_distance <- function(parametrisation_1, parametrisation_2) {
   return(distance)
 }
 
+#' Computes attractor landscape similarity for two given parametrisations
 compute_attractor_landscape_similarity <- function(attractor_landscape_1, attractor_landscape_2,
                                                    genes, output_genes, output_genes_encoder, instance_states,
                                                    attractor_similarity = "activity") {
@@ -29,6 +31,7 @@ compute_attractor_landscape_similarity <- function(attractor_landscape_1, attrac
   return(attractor_landscape_similarity)
 }
 
+#' Computes matrix of similarities for two given sets of attractors, using given attractor similarity metric
 compute_attractors_similarity_matrix <- function(attractors_1, attractors_2, genes, output_genes, output_genes_encoder,
                                                  instance_states, attractor_similarity) {
   if (attractor_similarity == "overlap") {
@@ -40,6 +43,7 @@ compute_attractors_similarity_matrix <- function(attractors_1, attractors_2, gen
   }
 }
 
+#' Computes matrix of activity similarities for two given sets of attractors
 compute_attractors_similarity_matrix_activity <- function(attractors_1, attractors_2, genes,
                                                           output_genes, output_genes_encoder, instance_states) {
   activity_ratios_matrix_1 <- compute_activity_ratios_matrix(attractors_1, genes, output_genes,
@@ -58,6 +62,7 @@ compute_attractors_similarity_matrix_activity <- function(attractors_1, attracto
   return(attractors_similarity_matrix)
 }
 
+#' Computes matrix of activity ratios (output genes x attractors)
 compute_activity_ratios_matrix <- function(attractors, genes, output_genes, output_genes_encoder, instance_states) {
   attractors_activity_ratios_matrix <- matrix(0, nrow = length(output_genes), ncol = length(attractors))
 
@@ -77,6 +82,7 @@ compute_activity_ratios_matrix <- function(attractors, genes, output_genes, outp
   return(attractors_activity_ratios_matrix)
 }
 
+#' Computes matrix of overlap similarities for two given sets of attractors
 compute_attractors_similarity_matrix_overlap <- function(attractors_1, attractors_2, output_genes,
                                                          output_genes_encoder, instance_states) {
   attractors_output_states_ratios_matrix_1 <- compute_attractors_output_states_ratios_matrix(attractors_1, output_genes,
@@ -105,6 +111,7 @@ compute_attractors_similarity_matrix_overlap <- function(attractors_1, attractor
   return(attractors_similarity_matrix)
 }
 
+#' Computes matrix of output states ratios (output states x attractors)
 compute_attractors_output_states_ratios_matrix <- function(attractors, output_genes,
                                                            output_genes_encoder, instance_states) {
   output_states_count <- 2^length(output_genes)
@@ -124,6 +131,7 @@ compute_attractors_output_states_ratios_matrix <- function(attractors, output_ge
   return(attractors_output_states_ratios_matrix)
 }
 
+#' Computes the matrix of constrain coefficients for LP computation
 compute_constraints_coefficients_matrix <- function(attractor_1_count, attractor_2_count) {
   constraints_coefficients_matrix <- matrix(0, nrow = attractor_1_count + attractor_2_count, ncol = attractor_1_count * attractor_2_count)
   ones_1 <- rep(1, attractor_2_count)
@@ -142,6 +150,7 @@ compute_constraints_coefficients_matrix <- function(attractor_1_count, attractor
   return(constraints_coefficients_matrix)
 }
 
+#' Computes the attractor distribution similarity using LP
 compute_attractor_distribution_similarity <- function(attractor_distribution_1, attractor_distribution_2,
                                                       lp_objective_coefficients, lp_constraints_coefficients_matrix, lp_directions) {
   lp_constraint_sums <- c(attractor_distribution_1, attractor_distribution_2)

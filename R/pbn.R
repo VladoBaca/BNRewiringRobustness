@@ -1,4 +1,6 @@
-#' Create a PBN from given RG.
+#' Creates a PBN from given RG.
+#' @rg The regulatory graph
+#' @return The PBN.
 #' @export
 create_pbn_from_rg <- function(rg) {
   validate_unique_edges(rg)
@@ -21,6 +23,7 @@ create_pbn_from_rg <- function(rg) {
               gene_function_vectors = gene_function_vectors, function_index_combinations = function_index_combinations))
 }
 
+#' Validate that there are no repeating edges in the RG
 validate_unique_edges <- function(rg) {
   all_unique <- all(sapply(1:nrow(rg), function(i) {length(which(rg$n1 == rg$n1[i] & rg$n2 == rg$n2[i])) == 1 } ))
 
@@ -98,7 +101,7 @@ is_function_vector_valid <- function(function_vector, regulation_count, regulati
   return(TRUE)
 }
 
-# generates a BooleanNetwork instance from the given data
+#' Generates a BooleanNetwork instance from the given data
 generate_BN <- function(genes, gene_regulators_indexes, gene_function_vectors) {
   fixed <- rep(-1, length(genes))
   names(fixed) <- genes
@@ -111,6 +114,7 @@ generate_BN <- function(genes, gene_regulators_indexes, gene_function_vectors) {
   return(network)
 }
 
+#' Generates a single interaction for genereated BN
 generate_interaction <- function(gene_i, gene_regulators_indexes, gene_function_vectors) {
   if (length(gene_regulators_indexes[[gene_i]]) == 0) {
     input <- 0
@@ -120,18 +124,21 @@ generate_interaction <- function(gene_i, gene_regulators_indexes, gene_function_
   return(list(input = input, func = gene_function_vectors[[gene_i]], expression = ""))
 }
 
+#' Create a BN from a given parametrisation
 generate_parametrisation_instance <- function(pbn, parametrisation) {
   instance <- generate_BN(pbn$genes, pbn$gene_regulators_indexes, parametrisation)
 
   return(instance)
 }
 
+#' Get a parametrisation from PBN by its numeric 1-based index.
 get_parametrisation_by_index <- function(pbn, parametrisation_index) {
   index_combination_vector <- pbn$function_index_combinations[[parametrisation_index]]  # as.numeric(pbn$function_index_combinations[parametrisation_index,])
 
   return(get_parametrisation_by_index_combination_vector(pbn$gene_function_vectors, index_combination_vector))
 }
 
+#' Get a parametrisation from PBN by vector of indexes of update functions of respective genes.
 get_parametrisation_by_index_combination_vector <- function(gene_function_vectors, index_combination_vector) {
   parametrisation <- lapply(1:length(index_combination_vector),
                             function(i) gene_function_vectors[[i]][[index_combination_vector[i]]])

@@ -48,6 +48,10 @@ compute_transition_table_cell <- function(instance, conversion_vectors, input_ro
   return(gene_value_on_input)
 }
 
+#' Extract a BN instance from a PBN for a given index.
+#' @param pbn The PBN to extract from
+#' @param instance_index 1-based numeric index of a parametrisation in the PBN
+#' @return the BN instance
 #' @export
 extract_instance <- function(pbn, instance_index) {
   parametrisation <- get_parametrisation_by_index(pbn, instance_index)
@@ -56,5 +60,3 @@ extract_instance <- function(pbn, instance_index) {
 
   return(instance)
 }
-
-

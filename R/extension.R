@@ -14,7 +14,10 @@ create_extension <- function(bn_motif, rg_large, output_genes) {
   return(list(pbn = pbn_intermediate, bn_parametrisation = bn_intermediate_parametrisation))
 }
 
-#' Compute the set of transitive regulators of motif genes
+#' Computes the set of transitive regulators of motif genes (including them).
+#' @param motif_genes the genes of the motif
+#' @param rg_large the RG to find the transitive closure in
+#' @return vector of all the transitive regulators
 #' @export
 compute_intermediate_genes <- function(motif_genes, rg_large)
 {
@@ -31,13 +34,17 @@ compute_intermediate_genes <- function(motif_genes, rg_large)
   return(gene_set)
 }
 
-#' Compute the motif extension from the given RG over given genes
+#' Computes the motif extension from the given RG over given genes
+#' @param rg the large rg
+#' @param intermediate_genes the set of genes to narrow to
+#' @return the graph narrowed to the given set of regulated genes
 #' @export
 create_intermediate_rg <- function(rg, intermediate_genes) {
   intermediate_rg <- rg[rg$n2 %in% intermediate_genes,]
   return(intermediate_rg)
 }
 
+#' Compute the parametrisation representing teh original motig in the extension RG
 create_intermediate_motif_parametrisation <- function(bn_motif, pbn_intermediate) {
   motif_transition_table <- build_transition_table(bn_motif, pbn_intermediate$genes)
 
@@ -46,6 +53,7 @@ create_intermediate_motif_parametrisation <- function(bn_motif, pbn_intermediate
   return(parametrisation)
 }
 
+#' Get the function vector of given gene for the baseline parametrisation in motif extension
 get_function_vector <- function(gene_i, bn_motif, pbn_intermediate, motif_transition_table) {
   gene <- pbn_intermediate$genes[gene_i]
   regulators_count <- length(pbn_intermediate$gene_regulators_indexes[[gene_i]])
@@ -71,6 +79,7 @@ get_function_vector <- function(gene_i, bn_motif, pbn_intermediate, motif_transi
   return(function_vector)
 }
 
+#' Validate the proper relationship between the genes of output, motif, and RG.
 validate_genes <- function(bn_motif, rg_large, output_genes)
 {
   if (!is_subset(output_genes, bn_motif$genes))
@@ -82,6 +91,7 @@ validate_genes <- function(bn_motif, rg_large, output_genes)
     stop("BN genes must be a subset of RG genes!")
 }
 
+#' Validate the proper relationship between the edges of motif and RG.
 validate_edges <- function(bn_motif, rg_large)
 {
   for (gene_i in 1:length(bn_motif$genes)) {
@@ -95,14 +105,14 @@ validate_edges <- function(bn_motif, rg_large)
   }
 }
 
+#' Subset test
 is_subset <- function(subset, superset) {
   genes_union <- union(superset, subset)
 
   return(length(genes_union) == length(superset))
 }
 
+# Does the given function vector represent a constant function?
 is_function_vector_constant <- function(function_output_vector) {
   return(all(function_output_vector == 0) | all(function_output_vector == 1))
 }
-
-

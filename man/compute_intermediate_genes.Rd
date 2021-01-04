@@ -2,10 +2,18 @@
 % Please edit documentation in R/extension.R
 \name{compute_intermediate_genes}
 \alias{compute_intermediate_genes}
-\title{Compute the set of transitive regulators of motif genes}
+\title{Computes the set of transitive regulators of motif genes (including them).}
 \usage{
 compute_intermediate_genes(motif_genes, rg_large)
 }
+\arguments{
+\item{motif_genes}{the genes of the motif}
+
+\item{rg_large}{the RG to find the transitive closure in}
+}
+\value{
+vector of all the transitive regulators
+}
 \description{
-Compute the set of transitive regulators of motif genes
+Computes the set of transitive regulators of motif genes (including them).
 }

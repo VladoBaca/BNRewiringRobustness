@@ -2,10 +2,18 @@
 % Please edit documentation in R/extension.R
 \name{create_intermediate_rg}
 \alias{create_intermediate_rg}
-\title{Compute the motif extension from the given RG over given genes}
+\title{Computes the motif extension from the given RG over given genes}
 \usage{
 create_intermediate_rg(rg, intermediate_genes)
 }
+\arguments{
+\item{rg}{the large rg}
+
+\item{intermediate_genes}{the set of genes to narrow to}
+}
+\value{
+the graph narrowed to the given set of regulated genes
+}
 \description{
-Compute the motif extension from the given RG over given genes
+Computes the motif extension from the given RG over given genes
 }

@@ -2,10 +2,13 @@
 % Please edit documentation in R/pbn.R
 \name{create_pbn_from_rg}
 \alias{create_pbn_from_rg}
-\title{Create a PBN from given RG.}
+\title{Creates a PBN from given RG.}
 \usage{
 create_pbn_from_rg(rg)
 }
+\value{
+The PBN.
+}
 \description{
-Create a PBN from given RG.
+Creates a PBN from given RG.
 }
