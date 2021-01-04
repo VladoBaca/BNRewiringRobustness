@@ -114,11 +114,15 @@ bifurcation_plot <- function(discrete_bifurcation_result, main = "") {
 
   data <- discrete_bifurcation_result$discrete_bifurcation
 
+  alpha_prior <- 16 / (nrow(discrete_bifurcation_result$discrete_bifurcation)^0.75)
+
+  alpha <- max(1/256, min(1, alpha_prior))
+
   return(data %>%
     ggplot2::ggplot(ggplot2::aes(x=rewiring_distance, y=attractor_landscape_similarity, group = rewiring_distance,
                xmin = 0, xmax = distance_max, ymin = 0, ymax = 1)) +
-    ggplot2::geom_boxplot(fill = "gray") +
-    ggplot2::geom_jitter(color="blue", alpha=0.3, width = 0.2, height = 0.01, size = 1.4) +
+    ggplot2::geom_boxplot(fill = "gray", outlier.size = 0.05) +
+    ggplot2::geom_jitter(color="blue", alpha = alpha, width = 0.2, height = 0.01, size = 1.7, shape = 20) +
     ggplot2::ggtitle(main) +
     ggplot2::xlab("Rewiring distance") +
     ggplot2::ylab("Attractor landscape similarity"))

@@ -1,9 +1,11 @@
 #' Create a PBN from given RG.
 #' @export
 create_pbn_from_rg <- function(rg) {
+  validate_unique_edges(rg)
+
   genes <- get_rg_genes(rg)
 
-  gene_function_vectors_full <- parallel_apply(genes, function(gene) {enumerate_gene_function_vectors(rg, gene)}, seq_threshold = 4)
+  gene_function_vectors_full <- parallel_apply(genes, function(gene) {enumerate_gene_function_vectors(rg, gene)}, seq_threshold = 5)
 
   gene_regulators_indexes <- lapply(gene_function_vectors_full, function(r) match(r$regulators, genes))
 
@@ -17,6 +19,14 @@ create_pbn_from_rg <- function(rg) {
 
   return(list(genes = genes, gene_regulators_indexes = gene_regulators_indexes,
               gene_function_vectors = gene_function_vectors, function_index_combinations = function_index_combinations))
+}
+
+validate_unique_edges <- function(rg) {
+  all_unique <- all(sapply(1:nrow(rg), function(i) {length(which(rg$n1 == rg$n1[i] & rg$n2 == rg$n2[i])) == 1 } ))
+
+  if(!all_unique) {
+    stop("Not all the edges are unique in the regulatory graph!")
+  }
 }
 
 #' Get all the genes of the given RG.

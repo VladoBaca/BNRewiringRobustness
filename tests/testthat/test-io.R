@@ -54,3 +54,14 @@ test_that("load_PBN correctly loads the parametrised Boolean network", {
 
   expect_equivalent(test_net$function_index_combinations,expected_combinations)
 })
+
+test_that("load_RG correctly loads the regulatory graph", {
+  test_graph <- load_RG(system.file("examples", "rgs", "test_middle.rg", package = "BNRewiringRobustness"))
+
+  n1 <- c("A", "B","C","A","B","C","A","B","C")
+  edge <- c("-?","-?","-??" ,"-?","->?" ,"-?","-|?", "-?", "->")
+  n2 <- c("A", "A","A","B","B","B","C","C","C")
+  expected <- data.frame(n1, edge, n2)
+
+  expect_equivalent(test_graph, expected)
+})

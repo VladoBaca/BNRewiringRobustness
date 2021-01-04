@@ -6,8 +6,6 @@ prepare_parallel <- function() {
   return(cluster)
 }
 
-#TODO test logging on Linux
-
 parallel_apply <- function(collection, fun, packages = character(), seq_threshold = 0, log_frequency = 0) {
   log_message <- function(log_file, message) {
     write(paste(Sys.time(),message, sep = "> "), file = log_file, append = TRUE)
@@ -26,21 +24,24 @@ parallel_apply <- function(collection, fun, packages = character(), seq_threshol
   {
     if(log_frequency > 0) {
       if(is.list(collection)) {
-        return(lapply(1:length(collection), function(i) {
+        result <- (lapply(1:length(collection), function(i) {
           result <- fun(collection[[i]])
           log_progress(log_file, i, length(collection), log_frequency)
           return(result)
         }))
       } else {
-        return(lapply(1:length(collection), function(i) {
+        result <- (lapply(1:length(collection), function(i) {
           result <- fun(collection[i])
           log_progress(log_file, i, length(collection), log_frequency)
           return(result)
         }))
       }
+      log_message(log_file, paste("Successfuly finished computation over", length(collection), "items."))
     } else {
-      return(lapply(collection, fun))
+      result <- (lapply(collection, fun))
     }
+
+    return(result)
   }
 
   if(log_frequency > 0) {
@@ -56,29 +57,28 @@ parallel_apply <- function(collection, fun, packages = character(), seq_threshol
         cluster <- prepare_parallel()
         `%dopar%` <- foreach::`%dopar%`
 
-        #foreach_result <- foreach::foreach (i=collection, .packages = packages) %dopar% fun(i)
-
-        #return(foreach_result)
-
         if(log_frequency > 0) {
           if(is.list(collection)){
-            return(
+            result <- (
               foreach::foreach (i=1:length(collection), .packages = packages) %dopar% {
                 result <- fun(collection[[i]])
                 log_progress(log_file, i, length(collection), log_frequency)
                 return(result)
               })
           } else {
-            return(
+            result <- (
               foreach::foreach (i=1:length(collection), .packages = packages) %dopar% {
                 result <- fun(collection[i])
                 log_progress(log_file, i, length(collection), log_frequency)
                 return(result)
               })
           }
+          log_message(log_file, paste("Successfuly finished computation over", length(collection), "items."))
         } else {
-          return(foreach::foreach (i=collection, .packages = packages) %dopar% fun(i))
+          result <- (foreach::foreach (i=collection, .packages = packages) %dopar% fun(i))
         }
+
+        return(result)
       },
       error = function(cond) {
         message("Problem occured with parallel execution, restarting computation sequentially instead.")
@@ -98,10 +98,6 @@ parallel_apply <- function(collection, fun, packages = character(), seq_threshol
         parallel::stopCluster(cluster)
       }
     )
-  }
-
-  if(log_frequency > 0) {
-    log_message(log_file, paste("Successfuly finished computation over", length(collection), "items."))
   }
 
   return(results)

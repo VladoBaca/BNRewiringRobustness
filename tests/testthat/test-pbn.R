@@ -10,6 +10,12 @@ test_that("create_pbn_from_rg correctly builds PBN", {
   expect_equivalent(pbn$function_index_combinations, list(c(1,1,1), c(1,2,1)))
 })
 
+test_that("create_pbn_from_rg correctly validates multiple edges", {
+  rg <- load_RG(system.file("examples", "rgs", "test_incorrect_multiple.rg", package = "BNRewiringRobustness"))
+
+  expect_error({create_pbn_from_rg(rg)}, regexp = "Not all the edges are unique in the regulatory graph!")
+})
+
 test_that("get_parametrisation_by_index_combination_vector fetches correct parametrisation", {
   pbn <- load_PBN(system.file("examples", "rgs", "test_triple.rg", package = "BNRewiringRobustness"))
   parametrisation_and <- get_parametrisation_by_index_combination_vector(pbn$gene_function_vectors, c(1,1,1))

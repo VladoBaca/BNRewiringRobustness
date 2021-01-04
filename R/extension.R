@@ -15,6 +15,7 @@ create_extension <- function(bn_motif, rg_large, output_genes) {
 }
 
 #' Compute the set of transitive regulators of motif genes
+#' @export
 compute_intermediate_genes <- function(motif_genes, rg_large)
 {
   gene_set <- motif_genes
@@ -30,6 +31,8 @@ compute_intermediate_genes <- function(motif_genes, rg_large)
   return(gene_set)
 }
 
+#' Compute the motif extension from the given RG over given genes
+#' @export
 create_intermediate_rg <- function(rg, intermediate_genes) {
   intermediate_rg <- rg[rg$n2 %in% intermediate_genes,]
   return(intermediate_rg)
@@ -43,7 +46,6 @@ create_intermediate_motif_parametrisation <- function(bn_motif, pbn_intermediate
   return(parametrisation)
 }
 
-#TODO this could be done without building transition table
 get_function_vector <- function(gene_i, bn_motif, pbn_intermediate, motif_transition_table) {
   gene <- pbn_intermediate$genes[gene_i]
   regulators_count <- length(pbn_intermediate$gene_regulators_indexes[[gene_i]])

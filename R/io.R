@@ -11,7 +11,6 @@ load_BN <- function(file_name) {
 #' Load the parametrised Boolean network from the RG in given file.
 #' @param file_name File name to load from.
 #' @return The parametrised Boolean network.
-#' @export
 load_PBN <- function(file_name) {
   rg <- load_RG(file_name)
   pbn <- create_pbn_from_rg(rg)

@@ -2,8 +2,6 @@
 #' Build the transition table in the form of an matrix:
 #' row = index of the (all-genes) state (binary+1), col = (instance-gene)
 build_transition_table <- function(instance, all_genes) {
-  #TODO this may be replaced by something better
-
   conversion_vectors <- lapply(instance$genes, (function(g) compute_conversion_vector(instance, all_genes, g)))
 
   input_rows <- all_binary_vectors(length(all_genes))
