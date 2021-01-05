@@ -1,5 +1,5 @@
 # BNRewiringRobustness
-R package for computing quantitative discrete bifurcation and rewiring robustness of Boolean networks
+R package for computing quantitative discrete bifurcation and rewiring robustness of Boolean networks.
 
 Installation:
 
@@ -8,6 +8,8 @@ Installation:
 
 Usage example:
 
+    library(BNRewiringRobustness)
+    
     bn <- load_BN(system.file("examples", "motifs","crm_or.bn", package = "BNRewiringRobustness"))
     rg <- load_RG(system.file("examples", "rgs","general_2.rg", package = "BNRewiringRobustness"))
     
