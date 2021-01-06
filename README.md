@@ -1,6 +1,8 @@
 # BNRewiringRobustness
 R package for computing quantitative discrete bifurcation and rewiring robustness of Boolean networks.
 
+For more information on usage of the package and the underlying theory, see the thesis on the subject: https://is.muni.cz/auth/th/diu88/Thesis.pdf
+
 Installation:
 
     install.packages("remotes")
